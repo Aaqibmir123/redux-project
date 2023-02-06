@@ -24,7 +24,8 @@ function App() {
 
   return (
     
-  <div style={{ background: mode ? 'black' : 'white',  height: '100vh',width:'100%',position: 'absolute' }}>
+  <div style={{ background: mode ? 'black' : 'white',  height: '100vh',
+  width:'100%',position: 'absolute' }}>
     
       <Header />
       <div>

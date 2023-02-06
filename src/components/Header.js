@@ -1,11 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import classes from './Header.module.css';
-import {authActions} from '../store/authslice';
+import { authActions } from '../store/authslice';
+import {togglecart} from '../store/cartVisibility';
 const Header = () => {
   const isAuth = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
 
-  const logOutHandler=()=>{
+  const cartVisible = useSelector((state) => state.visibile.visibile);
+  const logOutHandler = () => {
     dispatch(authActions.logout());
   }
   return (
@@ -13,18 +15,21 @@ const Header = () => {
       <h1>Redux Auth</h1>
       {isAuth && (
         <nav>
-        <ul>
-          <li>
-            <a href='/'>My Products</a>
-          </li>
-          <li>
-            <a href='/'>My Sales</a>
-          </li>
-          <li>
-            <button onClick={logOutHandler}>Logout</button>
-          </li>
-        </ul>
-      </nav>
+          <ul>
+            <li>
+              <a href='/'>My Products</a>
+            </li>
+            <li>
+              <a href='/'>My Sales</a>
+            </li>
+            <button onClick={()=>dispatch(togglecart())} style={{
+                display:cartVisible ? 'block' : 'none'
+              }}>My Cart 0</button>
+            <li>
+              <button onClick={logOutHandler}>Logout</button>
+            </li>
+          </ul>
+        </nav>
       )}
     </header>
   );
