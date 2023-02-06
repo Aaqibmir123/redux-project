@@ -12,10 +12,13 @@ const infoSlice = createSlice({
         edit(state, action) {
             // console.log("hello",action.payload)
             state.data = [...state.data, action.payload];
+            
         },
         refresh(state,action) {
             state.data = action.payload
-        }
+        },
+
+        
 
     }
 });
@@ -23,3 +26,4 @@ const infoSlice = createSlice({
 export const informationSlice = infoSlice.actions;
 
 export default infoSlice.reducer;
+//Add a dark theme in your application. using redux-toolkit
